@@ -10,13 +10,16 @@ int main(int argc, char** argv) {
 	win = SDL_CreateWindow("Open GL Testing",
 		       	SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 			1024,768, SDL_WINDOW_OPENGL);
-	printf("%d", SDL_WINDOWPOS_UNDEFINED);
 
-	SDL_GLContext glcontext = SDL_GL_CreateContext(win);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION,3);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION,2);
+	SDL_GLContext glcontext = SDL_GL_CreateContext(win);	
 	
 	// Why do we need this?
-	glewInit();
-
+	GLenum err = glewInit();
+	if (err == GLEW_OK){
+		printf("Success");
+	}
 	glClearColor(0,0,100,1);
 	glClear(GL_COLOR_BUFFER_BIT);
 	SDL_GL_SwapWindow(win);
@@ -28,5 +31,14 @@ int main(int argc, char** argv) {
 	0.0f, 0.5f, 0.0f
 
 	};
+	
+	printf("GL Version: (%s)",glGetString(GL_VERSION));
 
+	unsigned int vbo;
+
+	glGenBuffers(1,&vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	
+	
 }
