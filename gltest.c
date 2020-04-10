@@ -53,11 +53,11 @@ int main(int argc, char** argv) {
 
 
 	unsigned int vbo;
-	unsigned int vao;
+	unsigned int vao_list[2];
 	unsigned int ebo;
 
 	glGenBuffers(1, &vbo);
-	glGenVertexArrays(1, &vao);
+	glGenVertexArrays(2, &vao_list);
 	glGenBuffers(1, &ebo);
 
 	glBindVertexArray(vao);
