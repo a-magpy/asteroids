@@ -38,10 +38,12 @@ int main(int argc, char** argv) {
 	glViewport(0,0, 1024, 768);
 	
 	float vertices[] = {
-		0.5f, 0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-		-0.5f, -0.5f, 0.0f,
-		-0.5f, 0.5f, 0.0f
+		-0.5f, 0.0f, 0.0f, // Triangle one
+		0.0f, 0.0f, 0.0f,
+		-0.25f, 0.5f, 0.0f,
+		0.0f, 0.0f, 0.0f,// Triangle two
+		0.5f, 0.0f, 0.0f,
+		0.25f, 0.5f, 0.0f,
 	};
 
 	unsigned int indices[] = {
@@ -144,9 +146,9 @@ int main(int argc, char** argv) {
 
 	glClearColor(0.2f,0.3f,0.4f,1);
 	glClear(GL_COLOR_BUFFER_BIT);
-	//glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	SDL_GL_SwapWindow(win);
 	SDL_Delay(1000);
 	
