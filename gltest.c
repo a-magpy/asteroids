@@ -74,6 +74,9 @@ int main(int argc, char** argv) {
 	int *p = (void*)&x+4;
 	printf("Address: %p\n", &x[1]);
 	printf("Address: %d\n", *p);
+	char *cp = "Foo";
+	char ch[] = "Foo";
+	printf("%s", ch);
 	//
 
 	const char *vertexShaderSource = "#version 330 core\n"
